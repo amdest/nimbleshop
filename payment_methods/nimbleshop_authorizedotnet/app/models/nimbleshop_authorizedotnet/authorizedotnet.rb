@@ -21,7 +21,6 @@ module NimbleshopAuthorizedotnet
       processor = processor_klass.new(order: order, payment_method: self)
 
       processor.kapture transaction_gid: order.payment_transactions.last.transaction_gid
-      order.kapture!
     end
 
     private

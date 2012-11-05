@@ -67,6 +67,7 @@ module NimbleshopPaypalwp
     end
 
     def nimbleshop_paypalwp_protocol
+      # TODO do not hardcode decision based on env
       NimbleshopPaypalwp::Paypalwp.first.mode == 'production' ? 'https' : 'http'
     end
 

@@ -40,7 +40,7 @@ module NimbleshopPaypalwp
       service.return_url         nimbleshop_paypalwp_return_url(order)
       service.cancel_return_url  nimbleshop_paypalwp_cancel_url(order)
 
-      Rails.logger.debug service.inspect
+      Rails.logger.debug "service attributes: #{service.inspect}"
     end
 
     def nimbleshop_paypalwp_crud_form

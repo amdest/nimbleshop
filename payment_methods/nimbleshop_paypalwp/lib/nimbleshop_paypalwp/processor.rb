@@ -5,7 +5,7 @@ module NimbleshopPaypalwp
 
     def initialize(options = {})
       @notify = ActiveMerchant::Billing::Integrations::Paypal::Notification.new(options[:raw_post])
-      @order = Order.find_by_number!(notify.invoice)
+      @order = Order.find_by_number! notify.invoice
       @payment_method = NimbleshopPaypalwp::Paypalwp.first
     end
 
@@ -52,7 +52,9 @@ module NimbleshopPaypalwp
     end
 
     def ipn_from_paypal?
-      amount_match? && notify.complete? && business_email_match? && notify_acknowledge
+      result = amount_match? && notify.complete? && business_email_match? && notify_acknowledge
+      Rails.logger.debug "ipn_from_paypal? : #{result}"
+      result
     end
 
     def notify_acknowledge
@@ -60,11 +62,15 @@ module NimbleshopPaypalwp
     end
 
     def business_email_match?
-      notify.account ==  payment_method.merchant_email
+      result = notify.account ==  payment_method.merchant_email
+      Rails.logger.debug "business_email_match? : #{result}"
+      result
     end
 
     def amount_match?
-      notify.amount.cents == order.total_amount_in_cents
+      result = notify.amount.cents == order.total_amount_in_cents
+      Rails.logger.debug "amount_match? : #{result}"
+      result
     end
 
     def purchased_at

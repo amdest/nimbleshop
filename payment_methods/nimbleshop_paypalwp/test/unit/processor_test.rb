@@ -23,7 +23,7 @@ module Processor
       transaction = @order.payment_transactions.last
       assert_equal 'purchased', transaction.operation
       assert_equal true, @order.purchased?
-      assert_equal "April 01, 2012 at 05:46 pm", @order.purchased_at.to_s(:long)
+      assert_match /April 01, 2012/, @order.purchased_at.to_s(:long)
       assert_equal NimbleshopPaypalwp::Paypalwp.first, @order.payment_method
       assert_equal transaction.amount, @order.total_amount_in_cents
     end

@@ -55,6 +55,19 @@
         </div>
       </div>
 
+      <div class='control-group'>
+        <div class='controls'>
+          <label class='checkbox'>
+            <%= f.check_box :zipcode_check, {}, 'enabled', 'disabled' %> Enable zipcode check
+            <%= link_to '?', '#', class: 'help', 'data-content' => 'Enabling zipcode check will match the zipcode of business address with the zipcode of the credit card holder.',
+                              'data-original-title' => 'Check zipcode match' %>
+          </label>
+        </div>
+      </div>
+
+
+
+
     </fieldset>
 
     <div class='form-actions'>

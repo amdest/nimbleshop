@@ -24,7 +24,7 @@ module NimbleshopStripe
     private
 
     def post_params
-      params.permit(stripe: [:mode, :ssl, :publishable_key, :secret_key, :business_name])
+      params.permit(stripe: [:mode, :ssl, :publishable_key, :secret_key, :business_name, :zipcode_check])
     end
 
     def load_payment_method

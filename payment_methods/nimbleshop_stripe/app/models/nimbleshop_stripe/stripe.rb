@@ -1,7 +1,7 @@
 module NimbleshopStripe
   class Stripe < PaymentMethod
 
-    store_accessor :metadata, :publishable_key, :secret_key, :business_name, :mode, :ssl, :zipcode_check, :address1_check
+    store_accessor :metadata, :publishable_key, :secret_key, :business_name, :mode, :ssl, :zipcode_check
 
     before_save :set_mode, :set_ssl
 
